@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 
-import { ThemeBox } from "./components/ThemeBox/ThemeBox";
-
-import { ThemeProvider } from "./ContextProviders/ThemeProvider";
+import { DashProvider } from "./ContextProviders/DashProvider";
+import { Dash } from "./components/Dash/Dash";
 
 function App() {
   return (
-    <ThemeProvider>
-      <div className="App">
-        <ThemeBox />
-      </div>
-    </ThemeProvider>
+    <DashProvider>
+      <Dash />
+    </DashProvider>
   );
 }
 
