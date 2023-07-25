@@ -6,17 +6,19 @@ import {
 } from "./Card.styled";
 import { image } from "../../Images/Images";
 
-export const Card = ({ data }) => {
-  const logoSVG = image.find((ele) => ele.title == data.title).svgContent;
+export const Card = ({ data, timeFrame }) => {
+  const logoSVG = image.find((ele) => ele.title == data.title);
 
-  //console.log(logoSVG);
   return data ? (
     <StyledCardWrapper area={data.title.split(" ").join("")}>
-      <StyledLogoContainer dangerouslySetInnerHTML={{ __html: logoSVG }} />
+      <StyledLogoContainer
+        color={logoSVG.color}
+        dangerouslySetInnerHTML={{ __html: logoSVG.svgContent }}
+      />
       <StyledContentContainer>
         <h3>{data.title}</h3>
-        <h1>{data.timeframes.weekly.current}hrs </h1>
-        <h3>Last week{data.timeframes.weekly.previous}hrs</h3>
+        <h1>{data.timeframes[timeFrame].current}hrs </h1>
+        <h3>Last week{data.timeframes[timeFrame].previous}hrs</h3>
       </StyledContentContainer>
     </StyledCardWrapper>
   ) : (
